@@ -8,19 +8,19 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RDK DOC",
+  title: "RDK X3/X5 Model Zoo DOC",
   // tagline: 'Dinosaurs are cool',
   favicon: "img/logo.png",
   // Set the production url of your site here
-  url: "https://developer.d-robotics.cc",
+  url: "https://liqinglian01.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/rdk_doc/",
+  baseUrl: "/model_zoo/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "D-Robotics", // Usually your GitHub org/user name.
-  projectName: "rdk_doc", // Usually your repo name.
+  organizationName: "liqinglian01", // Usually your GitHub org/user name.
+  projectName: "modelzoo_x_doc", // Usually your repo name.
 
   // onBrokenLinks: 'throw',
 
@@ -36,7 +36,7 @@ const config = {
     },
     // Dify Chatbot Configuration
     {
-      src: "/rdk_doc/js/dify-config.js",
+      src: "/modelzoo_doc/js/dify-config.js",
     },
     {
       src: "https://rdk.d-robotics.cc/embed.min.js",
@@ -77,18 +77,18 @@ const config = {
     ],
   ],
   // add by xgs for S100_doc 2025 年 4 月 21 日 16:34:51
-  plugins: [
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "docs_s",
-        path: "docs_s",
-        routeBasePath: "rdk_s",
-        sidebarPath: "./sidebars.js",
-        showLastUpdateTime: true,
-      },
-    ],
-  ],
+  // plugins: [
+  //   [
+  //     "@docusaurus/plugin-content-docs",
+  //     {
+  //       id: "docs_s",
+  //       path: "docs_s",
+  //       routeBasePath: "rdk_s",
+  //       sidebarPath: "./sidebars.js",
+  //       showLastUpdateTime: true,
+  //     },
+  //   ],
+  // ],
   markdown: {
     mermaid: true,
   },
@@ -114,7 +114,7 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "RDK X3 / X5",
+            label: "Model Zoo X3 / X5",
           },
           // add by xgs for S100_doc 2025 年 4 月 21 日 16:34:51 新增S100_doc npm install 去新增插件
           // {
@@ -123,13 +123,13 @@ const config = {
           //   position: 'left',
           //   // activeBaseRegex: '/docs_s/',
           // },
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            docsPluginId: "docs_s",
-            position: "left",
-            label: "RDK S100",
-          },
+          // {
+          //   type: "docSidebar",
+          //   sidebarId: "tutorialSidebar",
+          //   docsPluginId: "docs_s",
+          //   position: "left",
+          //   label: "RDK S100",
+          // },
 
           {
             href: "https://developer.d-robotics.cc/",
