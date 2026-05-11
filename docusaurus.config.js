@@ -20,7 +20,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "liqinglian01", // Usually your GitHub org/user name.
-  projectName: "modelzoo_x_doc", // Usually your repo name.
+  projectName: "model_zoo_x_doc", // Usually your repo name.
 
   // onBrokenLinks: 'throw',
 
