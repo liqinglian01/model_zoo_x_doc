@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "generate-sidebar-config": "node scripts/generate-sidebar-config.js",
+    "start": "npm run generate-sidebar-config && docusaurus start --locale zh-Hans",
+    "start:en": "npm run generate-sidebar-config && docusaurus start --locale en",
+    "build": "npm run generate-sidebar-config && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -25,7 +27,8 @@
     "medium-zoom": "^1.1.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "remark-directive": "^4.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",

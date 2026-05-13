@@ -1,0 +1,12 @@
+{
+  "VERSION_PRODUCT_MATRIX": {
+    "3.0.0": ["RDK X3"],
+    "3.5.0": ["RDK X5"],
+    "4.0.5": ["RDK S100/S600"]
+  },
+  "PRODUCT_VERSION_MATRIX": {
+    "RDK X3": ["3.0.0"],
+    "RDK X5": ["3.5.0"],
+    "RDK S100/S600": ["4.0.5"]
+  }
+}

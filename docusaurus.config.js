@@ -5,10 +5,13 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from "prism-react-renderer";
+import remarkDirective from "remark-directive";
+import remarkDocScope from "./src/remark/remark-doc-scope.js";
+import remarkGenerateSidebarConfig from "./src/remark/remark-generate-sidebar-config.js";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RDK X3/X5 Model Zoo DOC",
+  title: "Model Zoo DOC",
   // tagline: 'Dinosaurs are cool',
   favicon: "img/logo.png",
   // Set the production url of your site here
@@ -58,6 +61,16 @@ const config = {
       },
     },
   },
+  customFields: {
+    docBuildScope:
+      process.env.DOC_BUILD_PRODUCT?.trim() &&
+      process.env.DOC_BUILD_VERSION?.trim()
+        ? {
+            product: process.env.DOC_BUILD_PRODUCT.trim(),
+            version: process.env.DOC_BUILD_VERSION.trim(),
+          }
+        : null,
+  },
 
   presets: [
     [
@@ -68,6 +81,11 @@ const config = {
           routeBasePath: "/", // 修改默认文档路径
           sidebarPath: "./sidebars.js",
           showLastUpdateTime: true,
+          remarkPlugins: [
+            remarkDirective,
+            remarkDocScope,
+            remarkGenerateSidebarConfig,
+          ],
         },
         blog: { showReadingTime: true },
         pages: { exclude: ["/imager/**", "**/dl/**"] },
@@ -110,11 +128,15 @@ const config = {
           href: "https://d-robotics.cc/", // 修改为文档根路径
         },
         items: [
+          // {
+          //   type: "docSidebar",
+          //   sidebarId: "tutorialSidebar",
+          //   position: "left",
+          //   // label: "Model Zoo X3 / X5",
+          // },
           {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
+            type: "custom-DocScopeSelectors",
             position: "left",
-            label: "Model Zoo X3 / X5",
           },
           // add by xgs for S100_doc 2025 年 4 月 21 日 16:34:51 新增S100_doc npm install 去新增插件
           // {

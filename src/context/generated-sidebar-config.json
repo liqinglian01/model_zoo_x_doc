@@ -1,0 +1,20 @@
+{
+  "rdk_s_guide": {
+    "versions": [],
+    "products": [
+      "RDK S100/S600"
+    ]
+  },
+  "rdk_x3_guide": {
+    "versions": [],
+    "products": [
+      "RDK-X3"
+    ]
+  },
+  "rdk_x5_guide": {
+    "versions": [],
+    "products": [
+      "RDK-X5"
+    ]
+  }
+}
