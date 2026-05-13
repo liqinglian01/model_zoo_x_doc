@@ -3,15 +3,36 @@
     "versions": [],
     "products": [
       "RDK S100/S600"
-    ]
+    ],
+    "isCategory": false
   },
   "rdk_x3_guide": {
     "versions": [],
     "products": [
       "RDK-X3"
-    ]
+    ],
+    "isCategory": false
   },
   "rdk_x5_guide": {
+    "versions": [],
+    "products": [
+      "RDK-X5"
+    ],
+    "isCategory": false
+  },
+  "current/rdk_x3_guide": {
+    "versions": [],
+    "products": [
+      "RDK-X3"
+    ]
+  },
+  "current/rdk_s_guide": {
+    "versions": [],
+    "products": [
+      "RDK S100/S600"
+    ]
+  },
+  "current/rdk_x5_guide": {
     "versions": [],
     "products": [
       "RDK-X5"

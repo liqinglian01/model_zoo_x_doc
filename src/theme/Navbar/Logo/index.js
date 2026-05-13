@@ -35,14 +35,16 @@ export default function NavbarLogo() {
     navbar: {logo},
   } = useThemeConfig();
 
-  const title = isEnglish ? 'RDK Docs' : 'RDK 文档';
+  const title = isEnglish ? 'Documentation Center' : '文档中心';
+  const docCenterUrl = isEnglish
+    ? 'https://liqinglian01.github.io/rdk_doc_manager/en/'
+    : 'https://liqinglian01.github.io/rdk_doc_manager/';
 
   const fallbackAlt = logo?.alt ?? title;
   const alt = logo?.alt ?? fallbackAlt;
 
-  // 使用文档站点首页（自动包含 baseUrl 与当前语言前缀）。勿写死 /rdk_doc_filter/ 等路径，否则会 404。
   return (
-    <Link to="/" className="navbar__brand">
+    <Link href={docCenterUrl} className="navbar__brand">
       {logo && (
         <LogoThemedImage
           logo={logo}

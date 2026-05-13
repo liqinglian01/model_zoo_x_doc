@@ -1,64 +1,71 @@
-English| [简体中文](./README_CN.md)
+# RDK DOC Maintenance Guide
 
-Welcome to this project! This document will help you quickly get started with the installation, development, building, and deployment of RDK_DOC.
+English | [简体中文](./README.md)
 
-### I. Environment Installation
+## 1. Dependency Installation
 
-To install the dependencies for this project, execute the following command:
+### Requirements
 
-```shell
+- Node.js >= 18
+- npm (bundled with Node.js)
+
+### Install
+
+For first-time setup or daily local development:
+
+```bash
 npm install
 ```
 
-### II. Online Operation
+For CI or strictly locked dependency installation:
 
-
-To build only the Chinese manual:
-
-```shell
-npm run start
+```bash
+npm ci
 ```
 
-To build only the English manual:
+## 2. Documentation Maintenance Workflow
 
-```shell
-npm run start  -- --locale en
-```
+1. Update Chinese docs in `docs/`.
+2. Update English docs in `i18n/en/docusaurus-plugin-content-docs/current/`.
+3. If you changed visibility scope (`sidebar_versions`, `sidebar_products`, `_sidebar_scope.json`, `DocScope`), regenerate config once:
 
-This method does not support switching between Chinese and English documents. It can only build a single language document. If you need to display Chinese and English simultaneously, please refer to the method in Step III.
+   ```bash
+   npm run generate-sidebar-config
+   ```
 
-### III. Offline Deployment
+   Or run:
 
-To fully deploy the manual offline, please run the following script to download all images locally:
+   ```bash
+   npm run start
+   ```
 
-```shell
-python3 download_imgs.py
-```
+4. Verify locally (Chinese or English):
+   - Chinese: `npm run start`
+   - English: `npm run start:en`
+5. Run full build check before commit:
 
+   ```bash
+   npm run build
+   ```
 
-For compiling and deploying the documents, use the following command:
+6. Preview build artifacts locally when needed:
 
-```shell
-npm run build
-```
+   ```bash
+   npm run serve
+   ```
 
-To deploy the documents, use the following command:
+## 3. Common Maintenance Commands
 
-```shell
-#Direct Deployment
-
-npm run serve
-
-#Deploy with Specified IP Address and Port Number
-
-npm run serve -- --host=10.64.62.34 --port=1688 --no-open
-```
-
-This will start a static file server and provide the following links for access in the browser，The port number should be based on the actual port number:
-
-***English manual link***: http://localhost:3000/en/rdk_doc/
-
-***Chinese manual link***: http://localhost:3000/rdk_doc/
-
-**Note:** Please ensure that Node.js version 18.0 or higher is required.
+| Command | Purpose |
+|---|---|
+| `npm run generate-sidebar-config` | Manually generate sidebar visibility scope config |
+| `npm run watch-sidebar-config` | Watch doc changes and auto-update scope config |
+| `npm run start` | Start Chinese docs dev server (with config watch) |
+| `npm run start:en` | Start English docs dev server (with config watch) |
+| `npm run start:no-watch` | Start Chinese docs without config watch |
+| `npm run start:no-watch:en` | Start English docs without config watch |
+| `npm run start:port` | Start Chinese docs on port 3001 (with config watch) |
+| `npm run build` | Production build (includes sidebar config generation) |
+| `npm run serve` | Preview build artifacts locally |
+| `npm run deploy` | Build and deploy to GitHub Pages |
 

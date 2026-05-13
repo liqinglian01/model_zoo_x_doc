@@ -1,69 +1,71 @@
 [English](./README.md) | 简体中文
 
-欢迎使用本项目！此文档将帮助您快速开始安装、开发、构建和部署RDK_DOC的相关操作。
 
+## 1. 依赖安装
 
-### 一、环境安装
+### 环境要求
 
-安装本项目的依赖，请执行以下命令：
+- Node.js >= 18
+- npm（随 Node.js 安装）
 
-```shell
+### 安装方式
+
+首次拉取或日常本地开发：
+
+```bash
 npm install
-
-# 如安装失败
-npm install --registry=https://registry.npmmirror.com
 ```
 
-### 二、在线运行
+CI 或需要严格锁定依赖版本时：
 
-仅构建中文手册：
-
-```shell
-npm run start
+```bash
+npm ci
 ```
 
-仅构建英文手册：
+## 2. 文档维护流程
 
-```shell
-npm run start  -- --locale en
-```
+1. 修改中文文档：`docs/`
+2. 修改英文文档：`i18n/en/docusaurus-plugin-content-docs/current/`
+3. 若改动了显示范围（`sidebar_versions`、`sidebar_products`、`_sidebar_scope.json`、`DocScope`），执行一次配置生成：
 
-本方式无法实现文档的中英文切换，只能实现单种语言文档的构建，如果需要中英文同步显示，需要参考步骤三的方式。
+   ```bash
+   npm run generate-sidebar-config
+   ```
 
+   或执行：
 
-### 三、离线部署
-
-若需要完全离线部署手册，请运行以下脚本将图片下载到本地：
-
-```shell
-python3 download_imgs.py
-```
-
-文档编译确的编译部署方式，使用以下命令：
-
-```shell
-npm run build
-```
-
-文档部署方式，使用以下命令：
-
-```shell
-#直接部署
-
-npm run serve
-
-#指定ip地址和端口号部署
-
-npm run serve -- --host=10.64.62.34 --port=1688 --no-open
-
-```
-
-启动一个静态文件服务器，并在浏览器中提供以下链接进行访问,端口号以实际端口号为主：
-
-**英文手册链接**：http://localhost:3000/en/rdk_doc/
-
-**中文手册链接**：http://localhost:3000/rdk_doc/
+  ```bash
+   npm run start
+  ```
 
 
-**注意：** 请确保使用的 Node.js 版本 为18.0或以上版本。
+4. 本地预览验证（中文或英文）：
+   - 中文：`npm run start`
+   - 英文：`npm run start:en`
+5. 提交前做完整构建检查：
+
+   ```bash
+   npm run build
+   ```
+
+6. 需要本地查看构建产物时：
+
+   ```bash
+   npm run serve
+   ```
+
+## 3. 维护常用命令
+
+| 命令 | 用途 |
+|---|---|
+| `npm run generate-sidebar-config` | 手动生成侧边栏显示范围配置 |
+| `npm run watch-sidebar-config` | 监听文档变化并自动更新范围配置 |
+| `npm run start` | 本地启动中文文档开发服务（含配置监听） |
+| `npm run start:en` | 本地启动英文文档开发服务（含配置监听） |
+| `npm run start:no-watch` | 本地启动中文文档（不监听配置变化） |
+| `npm run start:no-watch:en` | 本地启动英文文档（不监听配置变化） |
+| `npm run start:port` | 在 3001 端口启动中文文档（含配置监听） |
+| `npm run build` | 生产构建（含侧边栏配置生成） |
+| `npm run serve` | 本地预览 build 产物 |
+| `npm run deploy` | 构建并部署到 GitHub Pages |
 
